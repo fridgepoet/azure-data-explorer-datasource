@@ -75,7 +75,7 @@ const ConnectionConfig: React.FC<ConnectionConfigProps> = ({
 
       <InlineField label="Cluster URL" labelWidth={26} tooltip="The cluster url for your Azure Data Explorer database.">
         <Input
-          aria-label="Cluster URL"
+          data-testid='cluster-url'
           value={jsonData.clusterUrl}
           id="adx-cluster-url"
           placeholder="https://yourcluster.kusto.windows.net"
@@ -105,6 +105,7 @@ const ConnectionConfig: React.FC<ConnectionConfigProps> = ({
         <Input
           value={jsonData.tenantId}
           id="adx-tenant-id"
+          data-testid='tenant-id'
           width={60}
           onChange={(ev: React.ChangeEvent<HTMLInputElement>) => updateJsonData('tenantId', ev.target.value)}
         />
@@ -132,6 +133,7 @@ const ConnectionConfig: React.FC<ConnectionConfigProps> = ({
         <Input
           value={jsonData.clientId}
           id="adx-client-id"
+          data-testid="client-id"
           width={60}
           onChange={(ev: React.ChangeEvent<HTMLInputElement>) => updateJsonData('clientId', ev.target.value)}
         />
@@ -139,6 +141,7 @@ const ConnectionConfig: React.FC<ConnectionConfigProps> = ({
 
       <SecretFormField
         label="Client secret"
+        aria-label="Client secret"
         value={secureJsonData?.clientSecret || undefined}
         labelWidth={13}
         inputWidth={30}

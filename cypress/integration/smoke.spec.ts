@@ -11,9 +11,6 @@ type ADXConfig = {
         clusterUrl: string;
         tenantId: string;
         clientId: string;
-        // tlsAuth: boolean;
-        // tlsAuthWithCACert: boolean;
-        // defaultDatabase: string;
     };
 };
 
@@ -32,29 +29,19 @@ e2e.scenario({
 
                 e2e.flows.addDataSource({
                     name: 'e2e-azure-data-explorer-datasource',
-                    checkHealth: true,
-                    expectedAlertMessage: 'hello hello',
+                    type:'Azure Data Explorer Datasource',
                     form: () => {
-                        e2eSelectors.ConfigEditor.AzureCloud.input().type('Azure')
-                        e2eSelectors.ConfigEditor.ClusterURL.input()
-                            .click({ force: true })
-                            .type(datasource.jsonData.clusterUrl);
+                        e2eSelectors.ConfigEditor.AzureCloud().type('Azure')
+                        e2e().get('[data-testid="cluster-url"]')
+                            .click({force: true})
+                            .type(datasource.jsonData.clusterUrl)
+                        e2e().get('[data-testid="tenant-id"]').type(datasource.jsonData.tenantId)
+                        e2e().get('[data-testid="client-id"]').type(datasource.jsonData.clientId)
+                        e2eSelectors.ConfigEditor.ClientSecret().type(datasource.secureJsonData.clientSecret)
                     },
-                    type:'Azure Data Explorer Datasource'
+                    expectedAlertMessage: 'Success'
                 })
             });
-
-
     }
 });
 
-
-// e2e.scenario({
-//     describeName:'Imports a dashboard',
-//     itName: 'Ensure you can import a number of json test dashboards from a specific test directory',
-//     addScenarioDataSource: true,
-//     addScenarioDashBoard: true,
-//     scenario: () => {
-//         e2e.flows.importDashboards('/cypress/dashboards', 1000)
-//     }
-// })

@@ -2,12 +2,8 @@ import {E2ESelectors} from '@grafana/e2e-selectors';
 
 export const Components = {
     ConfigEditor: {
-        AzureCloud: {
-            input: 'Azure cloud',
-        },
-        ClusterURL: {
-            input: 'Cluster URL'
-        }
+        AzureCloud: 'Azure cloud',
+        ClientSecret: 'Client secret',
     },
 };
 
