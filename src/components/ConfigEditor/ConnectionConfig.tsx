@@ -62,6 +62,7 @@ const ConnectionConfig: React.FC<ConnectionConfigProps> = ({
     <FieldSet label="Connection Details">
       <InlineField label="Azure cloud" labelWidth={26} tooltip="Select an Azure Cloud." required>
         <Select
+          aria-label='Azure cloud'
           options={azureClouds}
           value={azureClouds.find((v) => v.value === jsonData.azureCloud)}
           onChange={(change: SelectableValue<AzureCloudType>) =>
@@ -74,6 +75,7 @@ const ConnectionConfig: React.FC<ConnectionConfigProps> = ({
 
       <InlineField label="Cluster URL" labelWidth={26} tooltip="The cluster url for your Azure Data Explorer database.">
         <Input
+          aria-label="Cluster URL"
           value={jsonData.clusterUrl}
           id="adx-cluster-url"
           placeholder="https://yourcluster.kusto.windows.net"

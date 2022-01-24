@@ -36,8 +36,9 @@ e2e.scenario({
                     expectedAlertMessage: 'hello hello',
                     form: () => {
                         e2eSelectors.ConfigEditor.AzureCloud.input().type('Azure')
-                        e2eSelectors.ConfigEditor.ClusterURL.input().type(datasource.jsonData.clusterUrl);
-                        e2e().logToConsole('gregor')
+                        e2eSelectors.ConfigEditor.ClusterURL.input()
+                            .click({ force: true })
+                            .type(datasource.jsonData.clusterUrl);
                     },
                     type:'Azure Data Explorer Datasource'
                 })
